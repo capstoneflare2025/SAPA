@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragmentCoordinator">
+
+    <fragment
+        android:id="@+id/homeFragmentCoordinator"
+        android:name="com.example.sapa.CoordinatorHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_coordinator_home" />
+
+    <fragment
+        android:id="@+id/appointmentFragmentCoordinator"
+        android:name="com.example.sapa.CoordinatorAppointmentFragment"
+        android:label="Appointment"
+        tools:layout="@layout/fragment_coordinator_appointment" />
+
+    <fragment
+        android:id="@+id/studentFragmentCoordinator"
+        android:name="com.example.sapa.CoordinatorStudentFragment"
+        android:label="Student"
+        tools:layout="@layout/fragment_coordinator_student" />
+
+    <fragment
+        android:id="@+id/profileFragmentCoordinator"
+        android:name="com.example.sapa.CoordinatorProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_coordinator_profile" />
+
+
+</navigation>

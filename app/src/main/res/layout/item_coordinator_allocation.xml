@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <!-- Column: Number -->
+        <TextView
+            android:id="@+id/txtNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="1"
+            android:textSize="14sp"
+            android:gravity="center" />
+
+        <!-- Allocation Details Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="5">
+
+            <TextView
+                android:id="@+id/allocatioName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Allocation Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:paddingStart="4dp" />
+            <!-- New Text Views for timeSlot and billingInfo -->
+            <TextView
+                android:id="@+id/allocationSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="4dp"
+                android:paddingTop="2dp"
+                android:text="Emergency Room"
+                android:textSize="14sp" />
+
+            <!-- New Text Views for timeSlot and billingInfo -->
+            <TextView
+                android:id="@+id/allocationTimeSlot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9am to 10pm"
+                android:textSize="14sp"
+                android:paddingStart="4dp"
+                android:paddingTop="2dp" />
+
+            <TextView
+                android:id="@+id/allocationBillingInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Billing Info: $100"
+                android:textSize="14sp"
+                android:paddingStart="4dp"
+                android:paddingTop="2dp" />
+
+        </LinearLayout>
+
+        <!-- Actions Column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <!-- Delete Button -->
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_select"
+                android:contentDescription="Delete"
+                android:padding="4dp"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SAPA</string>
+
+
+
+
+        <string-array name="school_status_filter">
+            <item>All</item>
+            <item>Approved</item>
+            <item>Declined</item>
+            <item>Pending</item>
+        </string-array>
+
+    <string-array name="hospital_type_array">
+        <item>Public</item>
+        <item>Private</item>
+        <item>Teaching</item>
+    </string-array>
+
+
+
+</resources>

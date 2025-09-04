@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragmentAdmin"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/hospitalFragmentAdmin"
+        android:icon="@drawable/ic_hospital"
+        android:title="Hospital" />
+
+    <item
+        android:id="@+id/profileFragmentAdmin"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile" />
+
+</menu>
