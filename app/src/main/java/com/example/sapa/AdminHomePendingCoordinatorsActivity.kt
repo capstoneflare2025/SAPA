@@ -55,7 +55,7 @@ class AdminHomePendingCoordinatorsActivity : AppCompatActivity(),
     private fun fetchAllCoordinators() {
         thread {
             try {
-                val url = URL("http://192.168.254.193/sapa_api/coordinators/get_all_coordinators.php")
+                val url = URL("http://192.168.254.193/sapa_api/add_coordinator/get_all_coordinators.php")
                 val conn = url.openConnection() as HttpURLConnection
                 conn.requestMethod = "GET"
 
@@ -76,7 +76,7 @@ class AdminHomePendingCoordinatorsActivity : AppCompatActivity(),
                             obj.getString("coordinator_contact"),
                             obj.getString("coordinator_birthday"),
                             obj.getString("coordinator_gender"),
-                            obj.getString("coordinator_status")
+                            obj.getString("coordinator_status"),
                         )
                     )
                 }
@@ -93,6 +93,7 @@ class AdminHomePendingCoordinatorsActivity : AppCompatActivity(),
             }
         }
     }
+
 
 
     private fun filterCoordinators(status: String) {

@@ -1,6 +1,7 @@
 package com.example.sapa
 
 import android.content.Intent
+import androidx.appcompat.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -67,15 +68,39 @@ class AdminAddHospitalActivity : AppCompatActivity() {
             }
         }
 
-        // Handle back button click to navigate to previous screen or fragment
-        binding.buttonBack.setOnClickListener {
-            navigateBackToFragment()
-        }
 
         binding.backIcon.setOnClickListener {
             navigateBackToFragment()
         }
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 2001 && resultCode == RESULT_OK && data != null) {
+            // Retrieve hospital data returned from BillingAllocationActivity
+            val hospitalName = data.getStringExtra("hospital_name")
+            val hospitalEmail = data.getStringExtra("hospital_email")
+            val hospitalContact = data.getStringExtra("hospital_contact")
+            val hospitalType = data.getStringExtra("hospital_type")
+            val hospitalStreet = data.getStringExtra("hospital_street")
+            val hospitalCity = data.getStringExtra("hospital_city")
+            val hospitalProvince = data.getStringExtra("hospital_province")
+
+            // Set the EditText fields with this data to keep it visible
+            binding.hospitalName.setText(hospitalName)
+            binding.hospitalEmail.setText(hospitalEmail)
+            binding.hospitalContact.setText(hospitalContact)
+            binding.hospitalTypeDropdown.setText(hospitalType)
+            binding.hospitalStreet.setText(hospitalStreet)
+            binding.hospitalCity.setText(hospitalCity)
+            binding.hospitalProvince.setText(hospitalProvince)
+        }
+    }
+
+
+
 
     // Function to send hospital data to the next activity
     private fun sendHospitalDataToNextActivity(
@@ -96,26 +121,37 @@ class AdminAddHospitalActivity : AppCompatActivity() {
             putExtra("hospital_city", hospitalCity)
             putExtra("hospital_province", hospitalProvince)
         }
-        startActivity(intent)
+        startActivityForResult(intent, 2001)
     }
 
     private fun navigateBackToFragment() {
-        // Create the fragment instance
-        val fragment = AdminHospitalFragment()
-        val transaction = supportFragmentManager.beginTransaction()
+        // Check if any field has data entered
+        val isAnyFieldFilled = listOf(
+            binding.hospitalName.text.toString(),
+            binding.hospitalEmail.text.toString(),
+            binding.hospitalContact.text.toString(),
+            binding.hospitalTypeDropdown.text.toString(),
+            binding.hospitalStreet.text.toString(),
+            binding.hospitalCity.text.toString(),
+            binding.hospitalProvince.text.toString()
+        ).any { it.isNotBlank() }
 
-        val fragmentTag = AdminHospitalFragment::class.java.simpleName
-
-        // Check if the fragment is already added to the back stack
-        val existingFragment = supportFragmentManager.findFragmentByTag(fragmentTag)
-
-        if (existingFragment == null) {
-            // If the fragment is not already in the back stack, add it
-            transaction.replace(R.id.fragment_container_hospital, fragment, fragmentTag)
-            transaction.addToBackStack(fragmentTag)  // Use the fragment tag to avoid duplication
-            transaction.commit()  // Use commit() instead of commitNow()
+        if (isAnyFieldFilled) {
+            // Show confirmation dialog
+            AlertDialog.Builder(this)
+                .setTitle("Discard Changes?")
+                .setMessage("You have unsaved changes. Are you sure you want to go back? All entered data will be lost.")
+                .setPositiveButton("Yes, discard") { dialog, _ ->
+                    dialog.dismiss()
+                    finish()  // Close activity and discard changes
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss() // Just dismiss dialog and stay
+                }
+                .show()
         } else {
-            Log.d("AdminAddHospital", "Fragment already in the back stack, not adding again.")
+            // No data entered, just finish
+            finish()
         }
     }
 

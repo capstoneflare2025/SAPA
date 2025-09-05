@@ -43,7 +43,7 @@ class SchoolAdapter(
     override fun onBindViewHolder(holder: SchoolViewHolder, position: Int) {
         val school = schoolList[position]
 
-        holder.txtNumber.text = (position + 1).toString()
+        holder.txtNumber.text = school.id.toString()
         holder.txtName.text = "${school.schoolName}" // 👈 show status beside name
 
         holder.btnViewDetails.setOnClickListener { onActionClick("details", school) }

@@ -42,7 +42,7 @@ class PendingSchoolAdapter(
 
     override fun onBindViewHolder(holder: PendingSchoolViewHolder, position: Int) {
         val school = schools[position]
-        holder.txtNumber.text = (position + 1).toString()
+        holder.txtNumber.text = school.id.toString()
         holder.txtSchoolName.text = school.schoolName
         holder.txtSchoolStatus.text = "Status: ${school.schoolStatus}"
 

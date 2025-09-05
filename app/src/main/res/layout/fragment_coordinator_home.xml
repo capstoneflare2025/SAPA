@@ -167,7 +167,7 @@
                         android:id="@+id/tvAppointmentCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5 Today"
+                        android:text="5 Total"
                         android:textColor="#F57C00"
                         android:textStyle="bold"
                         android:textSize="14sp"

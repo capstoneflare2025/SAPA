@@ -41,7 +41,7 @@ class StudentsAdapter(
     override fun onBindViewHolder(holder: StudentsViewHolder, position: Int) {
         val students = studentsList[position]
 
-        holder.txtNumber.text = (position + 1).toString()
+        holder.txtNumber.text = students.id.toString()
         holder.txtName.text = students.studentFullName
 
         holder.btnViewDetails.setOnClickListener { onActionClick("details", students) }

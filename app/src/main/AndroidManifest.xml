@@ -38,6 +38,14 @@
         <activity android:name=".AdminAddHospitalBillingAllocationActivity" />
         <activity android:name=".CoordinatorAppointmentActivity" />
         <activity android:name=".CoordinatorAllocationActivity" />
+        <activity android:name=".CoordinatorSelectSchoolActivity" />
+        <activity android:name=".CoordinatorSelectStudentActivity" />
+        <activity android:name=".CoordinatorAppointmentListActivity" />
+        <activity android:name=".CoordinatorAppoinmentDetailsActivity" />
+        <activity android:name=".CoordinatorProfileInformationActivity" />
+        <activity android:name=".AdminPendingAppointmentsActivity" />
+        <activity android:name=".AdminAppointmenDetailsActivity" />
+        <activity android:name=".AdminHospitalInformationActivity" />
 </application>
 
     </manifest>

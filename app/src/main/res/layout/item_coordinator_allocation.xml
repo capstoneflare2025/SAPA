@@ -20,7 +20,7 @@
 
         <!-- Column: Number -->
         <TextView
-            android:id="@+id/txtNumber"
+            android:id="@+id/allocationNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -86,7 +86,7 @@
 
             <!-- Delete Button -->
             <ImageView
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnSelect"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_select"

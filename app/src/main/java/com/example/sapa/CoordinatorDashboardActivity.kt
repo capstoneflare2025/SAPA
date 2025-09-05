@@ -4,29 +4,35 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sapa.databinding.ActivityCoordinatorDashboardBinding
 
+import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.TextView
+
 class CoordinatorDashboardActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCoordinatorDashboardBinding
+    private var loadingDialog: AlertDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCoordinatorDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        loadingDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
-        // Load default fragment (Home)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(binding.fragmentCoordinatorContainer.id, CoordinatorHomeFragment())
                 .commit()
         }
 
-        // Handle bottom navigation with binding
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             val fragment = when (item.itemId) {
                 R.id.homeFragmentCoordinator -> CoordinatorHomeFragment()
-                R.id.appointmentFragmentCoordinator -> CoordinatorAppointmentFragment()
-                R.id.studentFragmentCoordinator -> CoordinatorStudentFragment()
                 R.id.profileFragmentCoordinator -> CoordinatorProfileFragment()
+                R.id.settingsFragmentCoordinator -> CoordinatorSettingsFragment()
                 else -> null
             }
 
@@ -38,4 +44,6 @@ class CoordinatorDashboardActivity : AppCompatActivity() {
             } ?: false
         }
     }
+
 }
+

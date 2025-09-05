@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.sapa.databinding.FragmentCoordinatorAppointmentBinding
+import com.example.sapa.databinding.FragmentCoordinatorSettingsBinding
 
-class CoordinatorAppointmentFragment : Fragment() {
-    private var _binding: FragmentCoordinatorAppointmentBinding? = null
+class CoordinatorSettingsFragment : Fragment() {
+    private var _binding: FragmentCoordinatorSettingsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -16,7 +16,7 @@ class CoordinatorAppointmentFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCoordinatorAppointmentBinding.inflate(inflater, container, false)
+        _binding = FragmentCoordinatorSettingsBinding.inflate(inflater, container, false)
         return binding.root
     }
 

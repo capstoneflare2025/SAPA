@@ -32,9 +32,26 @@ class AllocationAdapter(
     override fun onBindViewHolder(holder: AllocationViewHolder, position: Int) {
         val allocation = allocations[position]
 
-        // Bind allocation data to the views
-        holder.binding.txtNumber.text = (position + 1).toString()  // Display index (1-based)
+        // Bind allocation daqta to the views
+        holder.binding.txtNumber.text = allocation.id.toString() // Display index (1-based)
         holder.binding.allocatioName.text = allocation.allocationName  // Allocation name
+        // Handle delete button
+
+        holder.binding.btnDelete.setOnClickListener {
+            androidx.appcompat.app.AlertDialog.Builder(context)
+                .setTitle("Confirm Delete")
+                .setMessage("Are you sure you want to delete this allocation?")
+                .setPositiveButton("Yes") { dialog, _ ->
+                    allocations.removeAt(holder.adapterPosition)
+                    notifyItemRemoved(holder.adapterPosition)
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
+
     }
 
     // Return the total number of items

@@ -31,7 +31,7 @@
             android:id="@+id/tvDashboardTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="List of Hospitals"
+            android:text="Select Allocation"
             android:textSize="22sp"
             android:textStyle="bold"
             android:textColor="#333"
@@ -68,49 +68,17 @@
                 android:src="@drawable/ic_search" />
 
             <EditText
-                android:id="@+id/editSearchHospital"
+                android:id="@+id/searchId"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Search Hospital"
+                android:hint="Search by id"
                 android:background="@null"
                 android:padding="8dp"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="16sp"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
-    <!-- Filter Dropdown Card -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/filterCard"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="8dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="6dp"
-        app:layout_constraintTop_toBottomOf="@id/searchBarCard"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/dropdownFilterLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Filter by Hospital type"
-            android:layout_margin="12dp">
-
-            <AutoCompleteTextView
-                android:id="@+id/filterSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="true"/>
-        </com.google.android.material.textfield.TextInputLayout>
-    </com.google.android.material.card.MaterialCardView>
-
 
     <!-- RecyclerView Card -->
     <com.google.android.material.card.MaterialCardView
@@ -122,7 +90,7 @@
         android:layout_marginHorizontal="8dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="6dp"
-        app:layout_constraintTop_toBottomOf="@id/filterCard"
+        app:layout_constraintTop_toBottomOf="@id/searchBarCard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

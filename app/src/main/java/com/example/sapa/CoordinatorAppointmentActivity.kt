@@ -73,9 +73,14 @@ class CoordinatorAppointmentActivity : AppCompatActivity() {
                             val id = obj.getString("id")
                             val hospitalName = obj.getString("hospital_name")
                             val hospitalEmail = obj.getString("hospital_email")
+                            val hospitalProvince= obj.getString("hospital_province")
+                            val hospitalCity = obj.getString("hospital_city")
+                            val hospitalStreet = obj.getString("hospital_street")
+
+                            val hospitalAddress = "$hospitalProvince $hospitalCity $hospitalStreet"
 
                             // Add the hospital data to the list
-                            tempList.add(CoordinatorHospital(id, hospitalName,hospitalEmail))
+                            tempList.add(CoordinatorHospital(id, hospitalName,hospitalEmail, hospitalAddress))
                         }
 
                         // Run UI thread to update RecyclerView with fetched data

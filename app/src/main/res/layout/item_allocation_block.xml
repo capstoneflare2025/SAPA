@@ -56,26 +56,6 @@
             android:orientation="horizontal"
             android:gravity="end">
 
-            <!-- View Details Button -->
-            <ImageView
-                android:id="@+id/btnViewDetails"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_school_details"
-                android:contentDescription="View Details"
-                android:padding="4dp"
-                android:layout_marginStart="4dp" />
-
-            <!-- Edit Button -->
-            <ImageView
-                android:id="@+id/btnEdit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_edit"
-                android:contentDescription="Edit"
-                android:padding="4dp"
-                android:layout_marginStart="4dp" />
-
             <!-- Delete Button -->
             <ImageView
                 android:id="@+id/btnDelete"

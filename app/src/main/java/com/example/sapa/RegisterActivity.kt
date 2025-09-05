@@ -284,7 +284,7 @@ class RegisterActivity : AppCompatActivity() {
         coordinatorUserName: String,
         coordinatorPassword: String
     ) {
-        val url = "http://192.168.254.193/sapa_api/register.php"
+        val url = "http://192.168.254.193/sapa_api/add_coordinator/register.php"
 
         val stringRequest = object : StringRequest(
             Request.Method.POST, url,
@@ -311,7 +311,7 @@ class RegisterActivity : AppCompatActivity() {
                 params["coordinator_email"] = coordinatorEmail
                 params["coordinator_username"] = coordinatorUserName
                 params["coordinator_password"] = coordinatorPassword
-                params["coordinator_status"] = "Pending"
+                params["coordinator_status"] = "pending"
                 return params
             }
         }

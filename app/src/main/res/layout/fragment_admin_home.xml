@@ -12,7 +12,7 @@
         android:id="@+id/tvDashboardTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Coordinator Dashboard"
+        android:text="Admin Dashboard"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#333"
@@ -191,7 +191,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardAppointments"
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:strokeColor="#F57C00"
@@ -225,11 +225,34 @@
                         android:id="@+id/tvAppointmentCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5 Today"
-                        android:textColor="#F57C00"
+                        android:text=""
+                        android:textColor="#1565C0"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:id="@+id/tvAppointmentPending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#F57C00"
+                        android:text="Pending: 0" />
+
+                    <TextView
+                        android:id="@+id/tvAppointmentApproved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#2E7D32"
+                        android:text="Approved: 0" />
+
+                    <TextView
+                        android:id="@+id/tvAppointmentDeclined"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#D32F2F"
+                        android:text="Declined: 0" />
+
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -237,7 +260,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardBilling"
                 android:layout_width="0dp"
-                android:layout_height="150dp"
+                android:layout_height="170dp"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="4dp"
                 app:strokeColor="#D32F2F"
@@ -271,11 +294,33 @@
                         android:id="@+id/tvBillingCount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="8 Pending"
-                        android:textColor="#D32F2F"
+                        android:text="Total: 0"
+                        android:textColor="#1565C0"
                         android:textStyle="bold"
                         android:textSize="14sp"
                         android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:id="@+id/tvBillingPending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#F57C00"
+                        android:text="Pending: 0" />
+
+                    <TextView
+                        android:id="@+id/tvBillingtApproved"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#2E7D32"
+                        android:text="Approved: 0" />
+
+                    <TextView
+                        android:id="@+id/tvBillingDeclined"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#D32F2F"
+                        android:text="Declined: 0" />
+
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 

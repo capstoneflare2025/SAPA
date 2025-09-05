@@ -57,5 +57,11 @@ class UserAdapter(
         notifyDataSetChanged()
     }
 
+    fun addCoordinatorAtTop(coordinator: Coordinator) {
+        coordinators.add(0, coordinator)
+        notifyItemInserted(0)
+    }
+
+
     override fun getItemCount(): Int = coordinators.size
 }

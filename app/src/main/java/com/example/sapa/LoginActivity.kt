@@ -59,8 +59,9 @@
 
                 // ✅ Hardcoded Admin
                 // ✅ Hardcoded Admin
-                if (email.equals("admin123@gmail.com", ignoreCase = true)) {
-                    showTopToast("Welcome Admin!")
+                if (email.equals("tamayo123@gmail.com", ignoreCase = true)) {
+                    // ✅ Show loading message
+
 
                     // Save Admin session in SharedPreferences
                     val sharedPref = getSharedPreferences("SAPA_PREFS", MODE_PRIVATE)
@@ -69,13 +70,23 @@
                         apply()
                     }
 
+                    showTopToast("Please wait, logging in as Admin...")
+                    binding.progressBar.visibility = View.VISIBLE
+
+                    // ✅ Delay 3 seconds before navigating
+                    binding.root.postDelayed({
+                        binding.progressBar.visibility = View.GONE
+                        startActivity(Intent(this, AdminDashboardActivity::class.java))
+                        finish()
+                    }, 3000)
+
                     startActivity(Intent(this, AdminDashboardActivity::class.java))
                     finish()
                 }
                 else {
                     Thread {
                         try {
-                            val url = URL("http://192.168.254.193/sapa_api/login.php")
+                            val url = URL("http://192.168.254.193/sapa_api/add_coordinator/login.php")
                             val postData = "coordinator_email=$email&coordinator_password=$password"
 
                             val conn = url.openConnection() as HttpURLConnection
@@ -98,7 +109,7 @@
 
                                     when (status.lowercase()) {
                                         "approved" -> {
-                                            showTopToast("Login successful!")
+
 
                                             val data = json.getJSONObject("data")
 
@@ -128,6 +139,16 @@
                                                 apply()
                                             }
 
+// ✅ Show loading message
+                                            showTopToast("Please wait, logging in as Coordinator...")
+                                            binding.progressBar.visibility = View.VISIBLE
+
+                                            // ✅ Delay 3 seconds before navigating
+                                            binding.root.postDelayed({
+                                                binding.progressBar.visibility = View.GONE
+                                                startActivity(Intent(this, CoordinatorDashboardActivity::class.java))
+                                                finish()
+                                            }, 3000)
 
                                             // Go to Coordinator Dashboard
                                             val intent = Intent(this, CoordinatorDashboardActivity::class.java)

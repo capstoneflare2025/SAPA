@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- === Title === -->
+        <LinearLayout
+            android:id="@+id/hospitalTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:paddingBottom="16dp">
+
+            <!-- Back Icon (placed at the start) -->
+            <ImageView
+                android:id="@+id/backIcon"
+                android:layout_width="24dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Back Icon"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Title Text (Centered) -->
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Hospital Details"
+                android:textColor="@color/primary"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <!-- === Section: Hospital Information === -->
+        <TextView
+            android:id="@+id/hospitalInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hospital Information"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/hospitalTitle"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Hospital Name Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalNameInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Hospital Name"
+            app:layout_constraintTop_toBottomOf="@id/hospitalInfo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hospitalName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Hospital Email Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalEmailInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Hospital Email"
+            app:layout_constraintTop_toBottomOf="@id/hospitalNameInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hospitalEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Contact Number Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalContactInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number"
+            app:layout_constraintTop_toBottomOf="@id/hospitalEmailInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hospitalContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- City Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalProvinceInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Province"
+            app:layout_constraintTop_toBottomOf="@id/hospitalContactInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hospitalProvince"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- City Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalCityInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="City"
+            app:layout_constraintTop_toBottomOf="@id/hospitalProvinceInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/schoolCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Street Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalStreetInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Street"
+            app:layout_constraintTop_toBottomOf="@id/hospitalCityInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hospitalStreet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Hospital Type Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hospitalTypeInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Hospital Type"
+            app:layout_constraintTop_toBottomOf="@id/hospitalStreetInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/hospitalType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- === Section: Allocation Details === -->
+        <TextView
+            android:id="@+id/allocationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Allocation Details"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/hospitalTypeInput"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Allocation Name Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/allocationNameInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Allocation Name"
+            app:layout_constraintTop_toBottomOf="@id/allocationTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/allocationName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Allocation Section Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/allocationSectionInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Allocation Section"
+            app:layout_constraintTop_toBottomOf="@id/allocationNameInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/allocationSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Time Slot Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/timeSlotInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Time Slot"
+            app:layout_constraintTop_toBottomOf="@id/allocationSectionInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/timeSlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Billing Info Input -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/billingInfoInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Billing Info"
+            app:layout_constraintTop_toBottomOf="@id/timeSlotInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/billingInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- === Approval Buttons === -->
+        <LinearLayout
+            android:id="@+id/approvalButtonsLayout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/billingInfoInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/editButton"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Update"
+                android:backgroundTint="@color/primary"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

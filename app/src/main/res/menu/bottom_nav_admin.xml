@@ -5,14 +5,19 @@
         android:icon="@drawable/ic_home"
         android:title="Home" />
 
+
     <item
         android:id="@+id/hospitalFragmentAdmin"
         android:icon="@drawable/ic_hospital"
         android:title="Hospital" />
 
+
     <item
         android:id="@+id/profileFragmentAdmin"
         android:icon="@drawable/ic_profile"
         android:title="Profile" />
+
+
+
 
 </menu>

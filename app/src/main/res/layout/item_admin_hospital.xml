@@ -57,13 +57,23 @@
             android:gravity="end">
 
             <ImageView
-                android:id="@+id/btnSelect"
+                android:id="@+id/btnEdit"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_select"
-                android:contentDescription="Select"
+                android:src="@drawable/ic_edit"
+                android:contentDescription="Edit"
                 android:padding="4dp"
                 android:layout_marginStart="4dp" />
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="Delete"
+                android:padding="4dp"
+                android:layout_marginStart="4dp" />
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

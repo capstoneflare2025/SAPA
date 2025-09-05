@@ -29,6 +29,8 @@ class AdminHomeFragment : Fragment() {
         // Load counts for schools
         loadSchoolCounts()
         loadCoordinatorCounts()
+        loadAppointmentCounts() // ✅ Added here
+        loadBillingCounts() // ✅ Call added here
 
         // Dashboard card clicks
         binding.cardAddSchool.setOnClickListener {
@@ -42,8 +44,8 @@ class AdminHomeFragment : Fragment() {
         }
 
         binding.cardAppointments.setOnClickListener {
-            Toast.makeText(requireContext(), "Appointments clicked", Toast.LENGTH_SHORT).show()
-            // TODO: navigate to appointments activity
+            val intent = Intent(requireContext(), AdminPendingAppointmentsActivity::class.java)
+            startActivity(intent)
         }
 
         binding.cardBilling.setOnClickListener {
@@ -92,9 +94,80 @@ class AdminHomeFragment : Fragment() {
         Volley.newRequestQueue(requireContext()).add(request)
     }
 
+
+    /** ------------------ Load Appointment Counts ------------------ */
+    private fun loadAppointmentCounts() {
+        val url = "$baseUrl/add_appointment/get_appointment_counts.php"
+
+        val request = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                try {
+                    val obj = JSONObject(response)
+
+                    if (obj.getString("response") == "success") {
+                        val data = obj.getJSONObject("data")
+
+                        val total = data.getInt("total")
+                        val pending = data.getInt("pending")
+                        val approved = data.getInt("approved")
+                        val declined = data.getInt("declined")
+
+                        binding.tvAppointmentCount.text = "Total: $total"
+                        binding.tvAppointmentPending.text = "Pending: $pending"
+                        binding.tvAppointmentApproved.text = "Approved: $approved"
+                        binding.tvAppointmentDeclined.text = "Declined: $declined"
+                    } else {
+                        Toast.makeText(requireContext(), "Server error: ${obj.optString("message")}", Toast.LENGTH_SHORT).show()
+                    }
+
+                } catch (e: Exception) {
+                    Toast.makeText(requireContext(), "Parse error: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            },
+            { error ->
+                Toast.makeText(requireContext(), "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+            }
+        )
+
+        Volley.newRequestQueue(requireContext()).add(request)
+    }
+
+
+    private fun loadBillingCounts() {
+        val url = "$baseUrl/add_appointment/get_allocation_billing_counts.php"
+
+        val request = StringRequest(
+            Request.Method.GET, url,
+            { response ->
+                try {
+                    val obj = JSONObject(response)
+
+                    if (obj.getString("response") == "success") {
+                        val data = obj.getJSONObject("data")
+                        val total = data.getInt("total")
+
+                        binding.tvBillingCount.text = "Total: $total"
+                    } else {
+                        Toast.makeText(requireContext(), obj.optString("message"), Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: Exception) {
+
+                }
+            },
+            { error ->
+
+            }
+        )
+
+        Volley.newRequestQueue(requireContext()).add(request)
+    }
+
+
+
     /** ------------------ Load Coordinator Counts ------------------ */
     private fun loadCoordinatorCounts() {
-        val url = "$baseUrl/coordinators/get_coordinator_counts.php"
+        val url = "$baseUrl/add_coordinator/get_coordinator_counts.php"
 
         val request = StringRequest(
             Request.Method.GET, url,

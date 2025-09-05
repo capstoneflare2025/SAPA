@@ -3,6 +3,7 @@ package com.example.sapa
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
@@ -41,7 +42,7 @@ class AdminPendingCoordinatorDetailsDialogFragment : DialogFragment() {
                 it.getString("coordinator_contact") ?: "",
                 it.getString("coordinator_birthday") ?: "",
                 it.getString("coordinator_gender") ?: "",
-                it.getString("coordinator_status") ?: "Pending"
+                it.getString("coordinator_status") ?: "Pending",
             )
         }
         setStyle(STYLE_NO_FRAME, R.style.CustomDialog)
@@ -103,7 +104,7 @@ class AdminPendingCoordinatorDetailsDialogFragment : DialogFragment() {
             .build()
 
         val request = Request.Builder()
-            .url("http://192.168.254.193/sapa_api/coordinator/update_coordinator_status.php")
+            .url("http://192.168.254.193/sapa_api/add_coordinator/update_coordinator_status.php")
             .post(requestBody)
             .build()
 
@@ -116,15 +117,29 @@ class AdminPendingCoordinatorDetailsDialogFragment : DialogFragment() {
 
             override fun onResponse(call: Call, response: Response) {
                 val body = response.body?.string()
+
                 requireActivity().runOnUiThread {
-                    if (body != null && JSONObject(body).optString("status") == "success") {
-                        showResultDialog(newStatus)
-                        listener?.onCoordinatorUpdated(coordinator.id, newStatus)
+                    Log.d("ServerResponse", "Response body: $body") // ✅ Add this line
+
+                    if (body != null && body.trim().startsWith("{")) {
+                        try {
+                            val json = JSONObject(body)
+                            if (json.optString("status") == "success") {
+                                showResultDialog(newStatus)
+                                listener?.onCoordinatorUpdated(coordinator.id, newStatus)
+                            } else {
+                                Toast.makeText(requireContext(), "Update failed", Toast.LENGTH_SHORT).show()
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                            Toast.makeText(requireContext(), "Invalid JSON from server", Toast.LENGTH_SHORT).show()
+                        }
                     } else {
-                        Toast.makeText(requireContext(), "Update failed", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), "Invalid server response", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
+
         })
     }
 
