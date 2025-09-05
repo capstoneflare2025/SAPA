@@ -54,7 +54,7 @@ class AdminHospitalInformationActivity : AppCompatActivity() {
         // Handle back button click
         binding.backIcon.setOnClickListener { finish() }
 
-        // Handle update button click
+        // Handle edit button click
         binding.editButton.setOnClickListener {
             if (isEditing) {
                 showConfirmationDialog()  // Show confirmation dialog when clicking "Save"
